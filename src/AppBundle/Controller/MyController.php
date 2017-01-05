@@ -15,10 +15,10 @@ use Symfony\Component\HttpFoundation\Response;
 class MyController
 {
     /**
-     * @Route("/myRoute")
+     * @Route("/myRoute/{subpart}")
      */
-    public function myAction()
+    public function myAction($subpart)
     {
-        return new Response("Response returned by MyController");
+        return new Response("Response returned by MyController." . " YOU ARE ON THIS PAGE : " . $subpart);
     }
 }
