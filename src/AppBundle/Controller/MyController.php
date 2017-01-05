@@ -10,15 +10,24 @@ namespace AppBundle\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class MyController
+class MyController extends Controller
 {
     /**
      * @Route("/myRoute/{subpart}")
      */
     public function myAction($subpart)
     {
-        return new Response("Response returned by MyController." . " YOU ARE ON THIS PAGE : " . $subpart);
+        $sentences = [
+            "I'm the first sentence",
+            "and I'm the last one"
+        ];
+
+        return $this->render('myviews/show.html.twig', array(
+            'name' =>  $subpart,
+            'sentences' => $sentences
+        ));
     }
 }
